@@ -1,3 +1,22 @@
 .App {
   text-align: center;
 }
+
+
+.fact-cat{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+.fact-cat > p{
+  width: 40%;
+}
+
+.fact-cat > img{
+  max-width: 40%;
+  max-height: 300px;
+  
+}
