@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+  background-color: #222;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-table{
+  width: 100%;
+  padding-top: 16px;
+}
+
+h1{
+  margin: 0 auto;
+  padding: 32px 0 ;
+}
+
+.show-color-table >tr:nth-child(2n) {
+  background-color: #444;
+}
+
+.show-color-table >tr:nth-child(2n+1) {
+  background-color: #666;
+}
+
+.button-header{
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2px 16px;
+  height: 48px;
+  width: auto;
+  background-color: black;
+  border: #444 2px solid;
+  border-radius: 10px;
+}
+
+.input-header{
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2px 16px;
+  height: 48px;
+  width: auto;
+  border: #444 2px solid;
+  border-radius: 10px;
+}
