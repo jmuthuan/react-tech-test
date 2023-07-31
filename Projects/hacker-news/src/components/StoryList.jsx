@@ -36,21 +36,44 @@ const StoryList = () => {
     useEffect(() => {
         setIsLoading(true);
         const stories = fetch(URL_TOP_STORIES_ID)
-            .then(res => res.json())            
+            .then(res => res.json())
             .then(data => {
                 setStoriesID(data);
-                setIsLoading(false)}
-                )
-            .catch(err => alert('An error ocurred. Please try later...'));        
+                setIsLoading(false)
+            }
+            )
+            .catch(err => alert('An error ocurred. Please try later...'));
     }, [])
 
-    useEffect(()=>{
-        scrollToBottom();
-    },[size])
-    
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !isLoading) {
+                setSize(prevSize => prevSize + 1)
+            }
+        },
+            {
+                rootMargin: '100px'
+            })
 
-    const scrollToBottom = ()=>{        
-        bottomButton.current.scrollIntoView({behavior: 'smooth' })        
+        if (elChivato.current === null) {
+            return
+        }
+        
+        observer.observe(elChivato.current);
+
+        return () => {
+            observer.disconnect()
+        }
+
+    }, [isLoading, setSize])
+
+    /* useEffect(() => {
+        scrollToBottom();
+    }, [size]) */
+
+
+    const scrollToBottom = () => {
+        bottomButton.current.scrollIntoView({ behavior: 'smooth' })
     }
 
 
@@ -66,9 +89,9 @@ const StoryList = () => {
                 })}
             </ol>
 
-            <Button ref={bottomButton} type="button" onClick={()=>{setSize(size+1)}}>Load More</Button>
+            {/* <Button ref={bottomButton} type="button" onClick={()=>{setSize(size+1)}}>Load More</Button> */}
 
-            {!isLoading && <span ref={elChivato}> </span>}
+            {!isLoading && <span ref={elChivato}>.</span>}
         </div>
     )
 }
