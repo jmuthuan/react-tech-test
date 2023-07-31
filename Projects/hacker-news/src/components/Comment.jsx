@@ -19,11 +19,16 @@ text-align: start;
     margin-left: 0.5rem;
     font-size: 0.8rem;
 }
+
+& > summary > .by-comment{
+    font-weight: 700;
+    font-size: 1rem;
+}
 `
 
 const Comment = ({id})=> {
 
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState(null);
     
     useEffect(()=>{
         fetch(`${URL_COMMENT}${id}.json`)
@@ -32,7 +37,7 @@ const Comment = ({id})=> {
         .catch(err => alert('An error ocurred. Please try later...'));
     }, [])
 
-    if(!comment?.text) return <CommentLoader />
+    if(!comment) return <CommentLoader />
 
     const relativeTime = getRelativeTime(comment.time);
     
@@ -40,8 +45,7 @@ const Comment = ({id})=> {
         <>
         <Details>
             <summary>
-               <span>by {comment.by}</span>
-               <span>.</span>
+               <span className="by-comment">by {comment.by}. </span>               
                <span className="relative-time">({relativeTime})</span>
             </summary>
             <p>{comment.text}</p>
