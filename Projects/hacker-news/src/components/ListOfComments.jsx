@@ -1,4 +1,11 @@
+import { styled } from "styled-components";
 import Comment from "./Comment";
+
+const CommentsList = styled.li`
+    display: block;
+    border-left: 1px solid #d3d3d3;
+    padding-left: 0.2rem;
+`
 
 const ListOfComments = ({ comments }) => {
 
@@ -7,9 +14,9 @@ const ListOfComments = ({ comments }) => {
             {
                 comments.map(id => {
                     return (
-                        <li key={id}>
+                        <CommentsList key={id}>
                             <Comment id={id} />
-                        </li>
+                        </CommentsList>
                     )
                 })
             }

@@ -64,11 +64,7 @@ const StoryItem = ({ id }) => {
                     <span>{story.kids?.length} comments</span>
                 </Link>
             </Footer>
-
-
         </article>
-
-
     )
 }
 

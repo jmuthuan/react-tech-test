@@ -12,8 +12,7 @@ const CommentLoader = () => (
   >
     <rect x="40" y="5" rx="10" ry="10" width="350" height="20" /> 
     <circle cx="18" cy="15" r="10" /> 
-    <rect x="40" y="32" rx="10" ry="10" width="350" height="20" /> 
-    <rect x="40" y="59" rx="10" ry="10" width="350" height="20" />
+    <rect x="40" y="32" rx="10" ry="10" width="350" height="20" />
   </ContentLoader>
 )
 
