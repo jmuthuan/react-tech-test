@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import StoryItem from "./StoryItem";
-import StoryLoader from "./StoryLoader";
+import { styled } from "styled-components";
 
 const URL_TOP_STORIES_ID = "https://hacker-news.firebaseio.com/v0/topstories.json";
 
+const ItemLi = styled.li`
+    margin: 0.5rem;
+    padding-left: 0.5rem;
+    text-align: start;
+    
+    &::marker{
+        color: gray;
+        font-size: 1rem;    
+    }
+`
 
 const StoryList = () => {
     const [storiesID, setStoriesID] = useState();
@@ -18,21 +28,19 @@ const StoryList = () => {
     }, [])
 
 
-    //if (!storiesID) return <StoryLoader />
-
     return (
         <div>
             <ol>
-                {storiesID && storiesID.slice(0,(10*size)).map(id => {
+                {storiesID && storiesID.slice(0, (10 * size)).map(id => {
                     return (
-                        <li key={id}>
+                        <ItemLi key={id}>
                             <StoryItem id={id} />
-                        </li>
+                        </ItemLi>
                     )
                 })}
             </ol>
 
-                <button type="button" onClick={()=>{setSize(size+1)} }>Load More</button>
+            <button type="button" onClick={() => { setSize(size + 1) }}>Load More</button>
         </div>
     )
 }
